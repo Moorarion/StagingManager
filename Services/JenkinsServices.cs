@@ -323,6 +323,8 @@ namespace CheckStaging.Services
             var content = new FormUrlEncodedContent(new[] {
                 new KeyValuePair<string, string>("name", "branch"),
                 new KeyValuePair<string, string>("value", branch),
+                new KeyValuePair<string, string>("name", "deployer"),
+                new KeyValuePair<string, string>("value", owner),
                 new KeyValuePair<string, string>("name", "staging"),
                 new KeyValuePair<string, string>("value", fullStagingName),
                 new KeyValuePair<string, string>("name", "ignore_lint"),
@@ -334,6 +336,7 @@ namespace CheckStaging.Services
                 new KeyValuePair<string, string>("json", JObject.FromObject(new BuildWithParameters() {
                     parameter = new List<ParameterAction>() {
                         new ParameterAction() { name = "branch", value = branch },
+                        new ParameterAction() { name = "deployer", value = owner },
                         new ParameterAction() { name = "staging", value = fullStagingName },
                         new ParameterAction() { name = "ignore_lint", value = "true" },
                         new ParameterAction() { name = "without_sourcemap", value = "true" },
